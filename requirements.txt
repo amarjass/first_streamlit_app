@@ -1,5 +1,6 @@
 # requirements.txt
 
-snowflake-connector-python==22.1.2
+pip install snowflake-connector-python==22.1.2
+# snowflake-connector-python==22.1.2
 
 import snowflake.connector
