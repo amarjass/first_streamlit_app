@@ -46,12 +46,16 @@ fruityvice_normalized=pandas.json_normalize(fruityvice_response.json())
 #output it to the screen as a table
 streamlit.dataframe(fruityvice_normalized)
 
+
+#New Section to display Fruityvice api response 
 #Second  text box
-add_my_fruit = streamlit.text_input('What fruit would you like information about?', 'Kiwi')
-streamlit.write('The user entered ', add_my_fruit)
+streamlit.header('Fruityvice Fruit   2 Advice!')
+
+fruit_choice2 = streamlit.text_input('What fruit would you like information about?', 'apple')
+streamlit.write('The user entered ', fruit_choice2)
 import requests
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + add_my_fruit)
-streamlit.text(fruityvice_response.json())  # just writes the data on the screen
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice2)
+
 
 
 import snowflake.connector
