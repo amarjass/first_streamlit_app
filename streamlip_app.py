@@ -84,6 +84,21 @@ if streamlit.button('Get Fruit load list'):
    streamlit.dataframe(my_data_rows)
     
  ###############Snowflake function end###########
+
+#############snowflake insert function start
+
+#Allow the end user to insert fruit into the list
+def insert_row_snowflake(new_fruit):
+    with my_cnx.cursor() as my_cur:
+        my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from streamlit')")
+        return "Thanks for adding " +new_fruit
+    
+add_my_fruit = streamlit.text_input('What fruit would you like to add?')
+if streamlit.button('Add a fruit to the list'):
+    my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+    back_from_function = insert_row_snowflake(add_my_fruit)
+    streamlit.text(back_from_function)
+###############Snowflake insert function end############
     
     
     
@@ -131,11 +146,11 @@ streamlit.header("the fruit load list contains")
 #Second  text box
 streamlit.header('Fruityvice Fruit   2 Advice!')
 
-fruit_choice2 = streamlit.text_input('What fruit would you like information about?', 'apple')
+# fruit_choice2 = streamlit.text_input('What fruit would you like information about?', 'apple')
 streamlit.write('The user entered ', fruit_choice2)
 # import requests
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_choice2)
-streamlit.write('Thanks for adding ',fruit_choice2)
+#streamlit.write('Thanks for adding ',fruit_choice2)
 
-my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from streamlit')")
+#my_cur.execute("insert into PC_RIVERY_DB.PUBLIC.FRUIT_LOAD_LIST values ('from streamlit')")
 
