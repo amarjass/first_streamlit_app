@@ -65,8 +65,8 @@ try:
   else:
       back_from_function = get_fruitvice_data(fruit_choice)
       streamlit.dataframe(back_from_function)
-      
-    
+except URLError as e:      
+   streamlit.error() 
 
       
       
@@ -88,7 +88,7 @@ try:
 #output it to the screen as a table
 #streamlit.dataframe(fruityvice_normalized)
 #dont run anything post here while  we troublshoot
-#streamlit.stop()
+streamlit.stop()
 
 # import snowflake.connector
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
