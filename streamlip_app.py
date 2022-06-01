@@ -48,14 +48,14 @@ streamlit.dataframe(fruits_to_show)
   ############################# Using try and except block end
   
   ##Function block started
-  
-  #create a repeatable code block
-  def get_fruitvice_data(this_fruit_choice):
+#create a repeatable code block
+def get_fruitvice_data(this_fruit_choice):
     fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + this_fruit_choice)
     #take the json version of the response  and normalized it.
     fruityvice_normalized=pandas.json_normalize(fruityvice_response.json())
-    return fruityvice_response
-  #New Section to display Fruityvice api response 
+    return fruityvice_normalized
+  
+#New Section to display Fruityvice api response 
 #first text box
 streamlit.header('Fruityvice Fruit  Advice!')
 try:
